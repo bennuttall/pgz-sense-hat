@@ -14,7 +14,7 @@ colour_palette = [create_pixel(1100, 110*(i+1), colour) for i, colour in enumera
 
 def draw():
     screen.clear()
-    screen.fill((255, 255, 255))
+    screen.fill((0, 146, 69))
     for pixel in pixels.values():
         pixel.draw()
     for colour in colour_palette:
