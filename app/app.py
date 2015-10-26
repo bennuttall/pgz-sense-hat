@@ -1,7 +1,20 @@
+from sense_hat import SenseHat
+
+sense = SenseHat()
+
 WIDTH = 1200
 HEIGHT = 1000
 
-colours = ['black', 'white', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow']
+colours = {
+    'black': (0, 0, 0),
+    'white': (255, 255, 255),
+    'red': (255, 0, 0),
+    'green': (0, 255, 0),
+    'blue': (0, 0, 255),
+    'cyan': (0, 255, 255),
+    'magenta': (255, 0, 255),
+    'yellow': (255, 255, 0),
+}
 
 def create_pixel(x, y, colour):
     pixel = Actor(colour)
@@ -28,6 +41,9 @@ def on_mouse_down(pos):
     for xy, pixel in pixels.items():
         if pixel.collidepoint(pos):
             pixel.image = selected_colour
+            colour = colours[selected_colour]
+            x, y = xy
+            sense.set_pixel(x, y, colour)
     for colour in colour_palette:
         if colour.collidepoint(pos):
             selected_colour = colour.image
