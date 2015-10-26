@@ -1,6 +1,12 @@
-from sense_hat import SenseHat
+try:
+    from sense_hat import SenseHat
+except ImportError:
+    SenseHat = None
 
-sense = SenseHat()
+try:
+    sense = SenseHat()
+except:
+    sense = None
 
 WIDTH = 1200
 HEIGHT = 1000
@@ -41,9 +47,10 @@ def on_mouse_down(pos):
     for xy, pixel in pixels.items():
         if pixel.collidepoint(pos):
             pixel.image = selected_colour
-            colour = colours[selected_colour]
-            x, y = xy
-            sense.set_pixel(x, y, colour)
+            if sense:
+                colour = colours[selected_colour]
+                x, y = xy
+                sense.set_pixel(x, y, colour)
     for colour in colour_palette:
         if colour.collidepoint(pos):
             selected_colour = colour.image
