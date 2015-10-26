@@ -23,7 +23,7 @@ Download this repo, extract the contents, enter the directory and run the app:
 wget https://github.com/bennuttall/pgz-sense-hat/archive/master.tar.gz
 tar xzf master.tar.gz
 cd pgz-sense-hat-master/app
-pyzrun app.py
+pgzrun app.py
 ```
 
 ## Inspiration
